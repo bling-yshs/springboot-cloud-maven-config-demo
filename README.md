@@ -228,6 +228,8 @@
                    <artifactId>maven-compiler-plugin</artifactId>
                    <version>3.13.0</version>
                    <configuration>
+                       <!--保存变量原始名称，否则可能造成请求参数匹配不到-->
+                       <parameters>true</parameters>
                        <source>${java.version}</source>
                        <target>${java.version}</target>
                        <encoding>${project.build.sourceEncoding}</encoding>
@@ -331,15 +333,9 @@
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
+                <!--只要写这两个参数就可以了，其他的参数会继承父pom.xml中的配置-->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
